@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -25,10 +26,16 @@ public class MyService {
         return myRepo.getRootMarker();
     }
 
-    public void getRootMarkerByNeo4jClient(){
-        //Optional<Map<String, Object>> ls = neo4jClient.query("MATCH (n:RootMarker {current: true}) RETURN n ORDER BY n.domainId").fetchAs(RootMarker.class).first();
-        Optional<Map<String, Object>> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN n ORDER BY n.domainId").fetch().first();
-        System.out.println(ls.get());
+    public void getRootMarkerByNeo4jClient() throws NoSuchElementException {
+        //Optional<List> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN collect(n)").fetchAs(List.class).first();
+        //Optional<Map<String, String>> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN n ORDER BY n.domainId").fetchAs(String.class).first();
+        //Optional<Map<String, Object>> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN n ORDER BY n.domainId").fetch().first();
+        //Map<String, Object> test = ls.orElseThrow();
+        //System.out.println();
+    }
+
+    public void count(){
+        System.out.println(Long.toString(myRepo.count()));
     }
 
 }

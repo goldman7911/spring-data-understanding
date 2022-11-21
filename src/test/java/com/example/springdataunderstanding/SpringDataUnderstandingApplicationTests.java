@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class SpringDataUnderstandingApplicationTests {
 
-    private MyService ms;
+    private final MyService ms;
 
     @Autowired
     public SpringDataUnderstandingApplicationTests(MyService ms, Neo4jClient nc) {
@@ -49,6 +49,11 @@ class SpringDataUnderstandingApplicationTests {
     @Test
     void getRootMarkerByNeo4jClient() {
         ms.getRootMarkerByNeo4jClient();
+    }
+
+    @Test
+    void countRootMarkerPureSDN(){
+        ms.count();
     }
 
 }

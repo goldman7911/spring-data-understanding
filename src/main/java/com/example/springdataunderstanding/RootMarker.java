@@ -16,7 +16,6 @@ public class RootMarker {
     String messageId;
     String deviceId;
     String domainId;
-    int resourcesBPI;
     long createdDate;
     long drniId;
     boolean isFull;

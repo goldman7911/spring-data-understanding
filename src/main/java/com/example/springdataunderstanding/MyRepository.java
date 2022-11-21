@@ -10,5 +10,7 @@ public interface MyRepository extends Neo4jRepository<RootMarker, Long> {
     @Query("MATCH (n:RootMarker) RETURN n ORDER BY n.domainId")
     List<RootMarker> getRootMarker();
 
+    //@Query("MATCH (n:RootMarker) RETURN count(n)")
+    long count();
 
 }
