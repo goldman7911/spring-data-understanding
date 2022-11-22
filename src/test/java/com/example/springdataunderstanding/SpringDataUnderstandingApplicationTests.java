@@ -47,18 +47,18 @@ class SpringDataUnderstandingApplicationTests {
     }
 
     @Test
-    void getRootMarkerByNeo4jClient() {
-        ms.getRootMarkerByNeo4jClient().forEach(System.out::println);
+    void getResyncIdAndMessageIdsCount() {
+        ms.getResyncIdandMessageIdsCount().forEach(System.out::println);
     }
 
     @Test
-    void countRootMarkerPureSDN(){
-        ms.count();
+    void getCountPureSDN(){
+        ms.countRootMarker();
     }
 
     @Test
-    void customCount(){
-        ms.myCustomCount();
+    void getResyncIdAndMessageIdsCountPureSDN(){
+        ms.getResyncIdAndMessageIdsCountPureSDN();
     }
 
 }

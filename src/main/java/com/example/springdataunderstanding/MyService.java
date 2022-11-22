@@ -23,7 +23,7 @@ public class MyService {
         return myRepo.getRootMarker();
     }
 
-    public Collection<MyDTO> getRootMarkerByNeo4jClient() throws NoSuchElementException {
+    public Collection<MyDTO> getResyncIdandMessageIdsCount() throws NoSuchElementException {
         Collection<MyDTO> result = neo4jClient.query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
                 .fetchAs(MyDTO.class)
                 .mappedBy((typeSystem, record) -> {
@@ -34,12 +34,12 @@ public class MyService {
         return result;
     }
 
-    public void count(){
-        System.out.println(myRepo.count());
+    public void countRootMarker(){
+        System.out.println(myRepo.countRootMarker());
     }
 
-    public void myCustomCount(){
-        List<MyDTO> myDTO = myRepo.customCount();
+    public void getResyncIdAndMessageIdsCountPureSDN(){
+        List<MyDTO> myDTO = myRepo.getResyncIdAndMessageIdsCountPureSDN();
         for (MyDTO my : myDTO) {
             System.out.println(my.toString());
         }

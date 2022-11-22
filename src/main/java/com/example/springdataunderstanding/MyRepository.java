@@ -11,10 +11,10 @@ public interface MyRepository extends Neo4jRepository<RootMarker, Long> {
     List<RootMarker> getRootMarker();
 
     @Query("MATCH (n:RootMarker) RETURN count(n)")
-    Long countRootMarkerBydomainId();
+    Long countRootMarker();
 
     //THAT'S NOT WORKING
     @Query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
-    List<MyDTO> customCount();
+    List<MyDTO> getResyncIdAndMessageIdsCountPureSDN();
 
 }
