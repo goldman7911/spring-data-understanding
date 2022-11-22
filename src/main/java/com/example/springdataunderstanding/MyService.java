@@ -35,7 +35,14 @@ public class MyService {
     }
 
     public void count(){
-        System.out.println(Long.toString(myRepo.count()));
+        System.out.println(myRepo.count());
+    }
+
+    public void myCustomCount(){
+        List<MyDTO> myDTO = myRepo.customCount();
+        for (MyDTO my : myDTO) {
+            System.out.println(my.toString());
+        }
     }
 
 }

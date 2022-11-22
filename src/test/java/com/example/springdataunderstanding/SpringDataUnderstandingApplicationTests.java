@@ -56,4 +56,9 @@ class SpringDataUnderstandingApplicationTests {
         ms.count();
     }
 
+    @Test
+    void customCount(){
+        ms.myCustomCount();
+    }
+
 }
