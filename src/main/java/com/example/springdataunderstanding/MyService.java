@@ -5,10 +5,7 @@ import org.springframework.data.neo4j.core.Neo4jClient;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class MyService {
@@ -26,12 +23,15 @@ public class MyService {
         return myRepo.getRootMarker();
     }
 
-    public void getRootMarkerByNeo4jClient() throws NoSuchElementException {
-        //Optional<List> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN collect(n)").fetchAs(List.class).first();
-        //Optional<Map<String, String>> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN n ORDER BY n.domainId").fetchAs(String.class).first();
-        //Optional<Map<String, Object>> ls = neo4jClient.query("MATCH (n:RootMarker) RETURN n ORDER BY n.domainId").fetch().first();
-        //Map<String, Object> test = ls.orElseThrow();
-        //System.out.println();
+    public Collection<MyDTO> getRootMarkerByNeo4jClient() throws NoSuchElementException {
+        Collection<MyDTO> result = neo4jClient.query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
+                .fetchAs(MyDTO.class)
+                .mappedBy((typeSystem, record) -> {
+                    String resyncId = record.get("resyncId").asString();
+                    Long counter = record.get("counter").asLong();
+                    return new MyDTO(resyncId, counter);
+                }).all();
+        return result;
     }
 
     public void count(){

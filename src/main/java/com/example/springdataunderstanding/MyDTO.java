@@ -11,7 +11,7 @@ public class MyDTO {
     public String toString() {
         return "MyDTO{" +
                 "resyncId='" + resyncId + '\'' +
-                ", CountMessageIds=" + counter +
+                ", counter=" + counter +
                 '}';
     }
 }

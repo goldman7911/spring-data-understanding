@@ -48,7 +48,7 @@ class SpringDataUnderstandingApplicationTests {
 
     @Test
     void getRootMarkerByNeo4jClient() {
-        ms.getRootMarkerByNeo4jClient();
+        ms.getRootMarkerByNeo4jClient().forEach(System.out::println);
     }
 
     @Test
