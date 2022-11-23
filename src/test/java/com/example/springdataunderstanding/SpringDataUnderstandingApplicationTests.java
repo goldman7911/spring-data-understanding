@@ -61,4 +61,9 @@ class SpringDataUnderstandingApplicationTests {
         ms.getResyncIdAndMessageIdsCountPureSDN();
     }
 
+    @Test
+    void getResyncIdAndMessageIdsCountPureSDNProjections(){
+        ms.getResyncIdAndMessageIdsCountPureSDNProjections();
+    }
+
 }

@@ -39,8 +39,15 @@ public class MyService {
     }
 
     public void getResyncIdAndMessageIdsCountPureSDN(){
-        List<MyDTO> myDTO = myRepo.getResyncIdAndMessageIdsCountPureSDN();
+        Collection<MyDTO> myDTO = myRepo.getResyncIdAndMessageIdsCountPureSDN();
         for (MyDTO my : myDTO) {
+            System.out.println(my.toString());
+        }
+    }
+
+    public void getResyncIdAndMessageIdsCountPureSDNProjections(){
+        Collection<MyProjectionDTO> myDTO = myRepo.getResyncIdAndMessageIdsCountPureSDNProjections();
+        for (MyProjectionDTO my : myDTO) {
             System.out.println(my.toString());
         }
     }

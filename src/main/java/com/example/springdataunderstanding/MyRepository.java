@@ -3,6 +3,7 @@ package com.example.springdataunderstanding;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface MyRepository extends Neo4jRepository<RootMarker, Long> {
@@ -15,6 +16,10 @@ public interface MyRepository extends Neo4jRepository<RootMarker, Long> {
 
     //THAT'S NOT WORKING
     @Query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
-    List<MyDTO> getResyncIdAndMessageIdsCountPureSDN();
+    Collection<MyDTO> getResyncIdAndMessageIdsCountPureSDN();
+
+    //THAT'S NOT WORKING
+    @Query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
+    Collection<MyProjectionDTO> getResyncIdAndMessageIdsCountPureSDNProjections();
 
 }
