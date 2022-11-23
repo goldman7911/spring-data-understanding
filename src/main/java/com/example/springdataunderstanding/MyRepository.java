@@ -18,6 +18,10 @@ public interface MyRepository extends Neo4jRepository<RootMarker, Long> {
     @Query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
     Collection<MyDTO> getResyncIdAndMessageIdsCountPureSDN();
 
+    //THAT'S NOT WORKING?
+    @Query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
+    <T> Collection<T> getResyncIdAndMessageIdsCountPureSDNGenerics(Class<T> type);
+
     //THAT'S NOT WORKING
     @Query("match (r:RootMarker) UNWIND r.messageIds as rx return r.resyncId as resyncId, count(rx) as counter")
     Collection<MyProjectionDTO> getResyncIdAndMessageIdsCountPureSDNProjections();

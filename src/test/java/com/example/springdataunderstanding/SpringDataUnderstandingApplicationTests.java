@@ -11,6 +11,7 @@ import org.springframework.data.neo4j.core.Neo4jClient;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -64,6 +65,14 @@ class SpringDataUnderstandingApplicationTests {
     @Test
     void getResyncIdAndMessageIdsCountPureSDNProjections(){
         ms.getResyncIdAndMessageIdsCountPureSDNProjections();
+    }
+
+    @Test
+    void getResyncIdAndMessageIdsCountPureSDNGenerics(@Autowired MyRepository MyRepo){
+        Collection<MyDTO> myDTO = MyRepo.getResyncIdAndMessageIdsCountPureSDNGenerics(MyDTO.class);
+        for (MyDTO my : myDTO) {
+            System.out.println(my.toString());
+        }
     }
 
 }
